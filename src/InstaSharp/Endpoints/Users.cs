@@ -1,4 +1,4 @@
-﻿using InstaSharp.Extensions;
+using InstaSharp.Extensions;
 using InstaSharp.Models.Responses;
 using System;
 using System.Threading.Tasks;
@@ -83,7 +83,15 @@ namespace InstaSharp.Endpoints
         {
             AssertIsAuthenticated();
 
-            return Recent(OAuthResponse.User.Id, maxId, minId, count, minTimestamp, maxTimestamp);
+            var request = Request("self/media/recent");
+            
+            if (!string.IsNullOrEmpty(maxId)) request.AddParameter("max_id", maxId);
+            if (!string.IsNullOrEmpty(minId)) request.AddParameter("min_id", minId);
+            if (count.HasValue) request.AddParameter("count", count);
+            if (minTimestamp.HasValue) request.AddParameter("min_timestamp", ((DateTime)minTimestamp).ToUnixTimestamp());
+            if (maxTimestamp.HasValue) request.AddParameter("max_timestamp", ((DateTime)maxTimestamp).ToUnixTimestamp());
+
+            return Client.ExecuteAsync<MediasResponse>(request);
         }
 
         /// <summary>
