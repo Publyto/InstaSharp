@@ -1,4 +1,4 @@
-﻿using InstaSharp.Infrastructure;
+using InstaSharp.Infrastructure;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -128,5 +128,8 @@ namespace InstaSharp.Models
         /// </value>
         [JsonProperty("users_in_photo")]
         public List<UserInPhoto> UsersInPhoto { get; set; }
+
+        [JsonProperty("carousel_media")]
+        public List<CarouselMedia> CarouselMedia { get; set; }
     }
 }
