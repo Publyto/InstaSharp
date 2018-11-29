@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+using Newtonsoft.Json;
 using System.Collections.Generic;
 
 namespace InstaSharp.Models
@@ -12,6 +12,13 @@ namespace InstaSharp.Models
         /// The images.
         /// </value>
         public Image Images { get; set; }
+        /// <summary>
+        /// Gets or sets the videos.
+        /// </summary>
+        /// <value>
+        /// The videos.
+        /// </value>
+        public Video Videos { get; set; }
         /// <summary>
         /// Gets or sets the type.
         /// </summary>
